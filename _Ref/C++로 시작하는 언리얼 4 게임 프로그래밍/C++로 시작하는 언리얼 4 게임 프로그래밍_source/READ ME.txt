@@ -1,0 +1,19 @@
+* Create a new Unreal project on your computer from template "C++ Basic Code" called "GoldenEgg" (name important)
+
+* Chapter 8: 
+  * Add the AnimationStarterPack from the Unreal Launcher to your project
+  * Add in the contents of GoldenEgg into your project folder and overwrite older files and folders when prompted.
+
+* Chapter 10:
+  * Add in the contents of GoldenEgg into your project folder and overwrite older files and folders when prompted.
+
+* Chapter 11:
+  * Add the MixamoAnimationPack to your project first
+  * Add in the contents of GoldenEgg into your project folder and overwrite older files and folders when prompted.
+  * Be sure to install the mixamo pack first, and overwrite the old Mixamo_Adam_Skeleton.uasset with the new one with this package
+
+* Chapter 12: 
+  * Add in the contents of GoldenEgg into your project folder and overwrite older files and folders when prompted.
+
+* If something appears to not be working, please be sure to clean your project first, from the old cached files, then build your project again.
+  * From Visual Studio, just select "Build / Clean Solution" re-build

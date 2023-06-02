@@ -1,0 +1,130 @@
+========================================================
+@	로켓 연기 만들기
+========================================================
+
+-------------------------------------
+0.	개요
+-------------------------------------
+
+	-	로켓 발사시 하얀 연기를 뿜으며 날아가는 연출 적용.
+
+-------------------------------------
+1. 새 파티클 만들기.
+-------------------------------------
+
+	1)	파티클 애셋 만들기.
+	
+		-	[ _Apache / _Particle ] 폴더에 마우스 우클릭.
+
+			-> 기본 애셋 생성 / 파티클 시스템
+
+			->	이름은 [ RocketSmoke ]
+
+
+		-	생성 후 해당 애셋을 더블 클릭하여 캐스케이드 에디터 열기.
+
+
+
+	2)	이미터 이름 바꾸기
+		
+		-	캐스케이드 에디터에 기본으로 [ Particle Emitter ]이 만들어져 있음.
+
+		-	마우스 우클릭 -> [ 이미터 / 이미터 이름 변경 ]
+
+			->	[ Smoke ]로 이름 변경.
+
+
+	3)	파티클 머터리얼 설정
+
+		-	기본 머터리얼 사용.( M_Dust_particle )
+
+		-	[ Required 모듈 / Emitter / Material ]에서 [ M_Dust_particle ] 검색 후 설정.
+
+			-	M_Dust_particle는 SubUV로 만든 것이라 두 줄기 연기가 연출될 것임.
+
+	
+	4)	SubUV 설정.
+
+		-	SubUV
+
+			-	조금씩 변하는 조각그림을 한장의 이미지에 모아둔 것.
+
+			-	M_Dust_particle는 현재 2 X 2 이미지 사용.
+
+				P_Explosion3의 Smoke모듈에 사용된 머터리얼은 8 X 8 이미지 사용.
+
+		-	[ Required 모듈 / Interpolation Method ]	:	LinearBlend.
+
+			[ Required 모듈 / SubUV / Sub Images Horizontal ( Vertical ) ]	:	각각 2로 설정.
+
+
+	
+	5)	이미터 입자 수 설정.
+		
+		-	Spawn 모듈에서 관리.
+
+		-	[ Spawn 모듈 / Rate / Distribution ]	:	Distribution Float Uniform 으로 설정.
+			
+			Min / Max								:	50 / 100
+
+
+	6)	입자의 수명 설정.
+
+		-	Lifetime 모듈에서 관리.
+
+		-	[ Lifetime 모듈 / Lifetime / Lifetime / Distribution ]	:	Distribution Float Uniform 으로 설정.
+
+			Min / Max												:	2 / 3
+
+
+	7)	입자 크기 설정.
+
+		-	Initial Size 모듈에서 관리.
+		 
+		-	[ Initial Size 모듈 / Size / Start Size / Distribution ]	:	Distribution Vector Uniform 으로 설정.
+
+			Min / Max													:	(20,20,20) / (40,40,40)
+
+	
+	8)	입자 기본 이동 방향 설정.
+
+		-	Initial Velocity 모듈에서 관리.
+
+		-	[ Initial Velocity 모듈 / Velocity / Start Velocity / Distribution ]	:	Distribution Float Uniform 으로 설정.
+
+			Min / Max																:	(-10,-10,-10) / (10,10,10)
+
+
+	9)	시간에 따른 입자의 색상 설정.
+
+		-	Color Over Life 모듈에서 관리.
+
+		-	[ Color Over Life 모듈 / Color / Color Over Life / Distribution ]	:	Distribution Vector Uniform 으로 설정.
+
+			Min / Max															:	(0,0,0) / (0.4,0.4,0.4)
+
+			Locked Axes															:	XYZ
+							
+																				:	Min 에서 Max로 값이 변할 때 
+
+																					(x,y,z)가 같은 비율로 변하게하는 옵션.
+
+	10)	시간에 따른 입자의 크기 설정.
+
+		-	Size By Life 모듈에서 관리.
+
+			-	애셋 생성이 이 모듈이 없음.
+
+			-	이미터 우클릭 -> Size -> Size By Life 로 추가.
+
+		-	[ Size By Life 모듈 / Size / Life Multiplier / Distribution ]	:	Distribution Vector Uniform 으로 설정.
+
+			Min / Max														:	(1,1,1) / (5,5,5)
+
+
+	
+	11)	섬네일 만들기
+
+		-	툴바 / 섬네일
+
+		-	현재의 이미터 상태를 파티클의 썸네일 이미지로 만든다.
